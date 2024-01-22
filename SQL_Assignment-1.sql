@@ -3,8 +3,6 @@ USE vishvarami_db
 
 Assignment -1 
 
-Drop TABLE Products
-
 CREATE TABLE Products (
 ProductID INTEGER, ProductName VARCHAR(20), SupplierID INTEGER, CategoryID INTEGER, QuantityPerUnit INTEGER, UnitPrice INTEGER, UnitsInStock INTEGER, UnitsOnOrder INTEGER, ReorderLevel INTEGER, Discontinued BIT);
 
