@@ -1,32 +1,9 @@
-USE vishvarami_db
-SELECT * FROM Products
-DELETE FROM Products WHERE ProductID=1
-
-
-ALTER TABLE Products ADD Discontinued BIT; 
-
-
-
-SELECT ProductID, ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC;
-
-
-
-
-UPDATE Products SET Discontinued = 1 WHERE ProductID=1;
-
-DROP TABLE Products
-
-
-SELECT * FROM Products ORDER BY ProductID;
-
-DELETE FROM Products WHERE ProductID=3;
-DElETE FROM Products
 
 USE vishvarami_db
 
 Assignment -1 
 
-SELECT* FROM Products;
+Drop TABLE Products
 
 CREATE TABLE Products (
 ProductID INTEGER, ProductName VARCHAR(20), SupplierID INTEGER, CategoryID INTEGER, QuantityPerUnit INTEGER, UnitPrice INTEGER, UnitsInStock INTEGER, UnitsOnOrder INTEGER, ReorderLevel INTEGER, Discontinued BIT);
@@ -67,6 +44,10 @@ INSERT INTO Products VALUES (
 
 INSERT INTO Products VALUES (
 12,'Headphone', 21, 7, 3, 80, 1, 3, 1,0);
+
+
+SELECT* FROM Products;
+
 
 
 SELECT ProductID, ProductName, UnitPrice FROM Products WHERE UnitPrice<20;
