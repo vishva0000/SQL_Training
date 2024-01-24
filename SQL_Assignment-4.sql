@@ -77,12 +77,14 @@ SELECT * FROM norders;
 
 /* For finding average freight*/
 	
-CREATE PROCEDURE averageFreight 
+CREATE PROCEDURE averageFreight @customerID INT 
  AS 
-	SELECT AVG(freight) AS Average_Freight FROM norders;
+	
+	SELECT AVG(Freight) AS AverageFreight FROM norders WHERE cust_id=@customerID;
+
 Go
 
-EXEC averageFreight;
+EXEC averageFreight @customerID = 112;
 
 /*     For Trigger   */
 CREATE TRIGGER checkFreight
@@ -90,9 +92,11 @@ ON norders
 AFTER INSERT, UPDATE
 AS
 BEGIN
-	DECLARE @avgFreight INT, @freight INT
+	DECLARE @avgFreight INT, @freight INT, @custmorID INT
 
-	SELECT @avgFreight =  AVG(freight) FROM norders;
+	SELECT @custmorID = cust_id FROM norders inserted;
+
+	SELECT @avgFreight =  AVG(freight) FROM norders WHERE cust_id= @custmorID;
 
 	SELECT @freight = freight FROM inserted;
 
@@ -101,7 +105,10 @@ BEGIN
         RAISERROR('Invalid Freight Update Or Insert Statment is cancelled ',16,1); 
 		ROLLBACK TRANSACTION;
         end
+	
 END;
+
+DROP TRIGGER checkFreight;
 
 
 		/*  2 */
